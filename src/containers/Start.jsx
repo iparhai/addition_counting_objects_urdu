@@ -26,11 +26,11 @@ class Start extends React.Component {
                     <i className="fas fa-graduation-cap"></i>
                     <br />
                     <ReactTypingEffect
-                        text={["Today we will be solving some fun Math Problems!!!"]}
+                        text={["آج ہم ریاضی کے کچھ تفریحی مسائل سیکھیں گے۔"]}
                         cursorRenderer={cursor => <h1>{cursor}</h1>}
                         speed={70}
                         eraseSpeed={70}
-                        eraseDelay={200}
+                        eraseDelay={1000}
                         displayTextRenderer={(text, i) => {
                             return (
                                 <h3>
@@ -39,7 +39,7 @@ class Start extends React.Component {
                                         return (
                                             <span
                                                 key={key}
-                                                style={i % 2 === 0 ? { color: 'magenta' } : {}}
+                                                
                                             >{char}</span>
                                         );
                                     })}
@@ -51,9 +51,9 @@ class Start extends React.Component {
                     <h1>Math?</h1> */}
                 </div>
                 <p>
-                    Press to start the game
+                گیم شروع کرنے کے لیے بٹن دبائیں۔
                 </p>
-                <Button isClicked={this.clicked}>Start</Button>
+                <Button isClicked={this.clicked}>شروع کریں</Button>
             </div>
         )
     }
