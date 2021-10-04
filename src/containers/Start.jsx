@@ -30,7 +30,7 @@ class Start extends React.Component {
                         cursorRenderer={cursor => <h1>{cursor}</h1>}
                         speed={70}
                         eraseSpeed={70}
-                        eraseDelay={1000}
+                        eraseDelay={3000}
                         displayTextRenderer={(text, i) => {
                             return (
                                 <h3>
