@@ -1,6 +1,7 @@
 import React from 'react';
 import Colors from '../constant/colors'
 import PropTypes from 'prop-types'
+import correctAnswerSound from '../assets/sounds/ca.mp3'
 
 function AnswerModal({ type, text }) {
 
@@ -18,6 +19,11 @@ function AnswerModal({ type, text }) {
 }
 
 function Message({ text, type }) {
+    const rightSound = new Audio(correctAnswerSound)
+    if (type === "success") {
+        rightSound.volume = 0.5
+        rightSound.play()
+    }
     return (
         <span>
             {text && (type === "success") && <h4 style={{color: Colors.green }}>{text}</h4> } 
