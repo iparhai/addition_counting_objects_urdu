@@ -36,6 +36,9 @@ class App extends Component {
 
     // alert(id)
   }
+  componentDidMount(){
+    this.state.sound.play()
+  }
   handleSoundClick = () => {
     if (!this.state.sound.paused) {
       this.state.sound.pause()

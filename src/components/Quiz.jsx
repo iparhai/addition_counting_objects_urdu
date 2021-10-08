@@ -171,7 +171,7 @@ class Quiz extends React.Component {
                   <DifficultDrag incCount={(number) => { this.setState({ answer: this.state.answer + number }) }} decCount={(number) => { this.setState({ answer: this.state.answer - number }) }} count={this.state.answer} img={this.state.randomImage} />
                 </div> :
                 <div>
-                  <table align="center">
+                  {/* <table align="center">
                     <tbody>
                       <tr >
                         {[...Array(parseInt(this.state.firstNumber))].map((e, i) => {
@@ -183,7 +183,20 @@ class Quiz extends React.Component {
                         })}
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
+                  <div className="objectRow" style={{ width: "100%" }}>
+                    <div className="objectLeft">
+                      {[...Array(parseInt(this.state.firstNumber))].map((e, i) => {
+                        return <img key={i} src={this.state.randomImage} className="questionImage " draggable="false" />
+                      })}
+                    </div>
+                    <span className="operator" style={{ fontSize: "3.5em", textShadow: "1px 1px 1px #ff0000", float: "left", display: "inline" }}> {this.state.symbol} </span>
+                    <div className="objectRight">
+                      {[...Array(parseInt(this.state.secondNumber))].map((e, i) => {
+                        return <img key={i} src={this.state.randomImage} className="questionImage " draggable="false" />
+                      })}
+                    </div>
+                  </div>
 
                   <Drop incCount={(number) => { this.setState({ answer: this.state.answer + number }) }} decCount={(number) => { this.setState({ answer: this.state.answer - number }) }} count={this.state.answer} img={this.state.randomImage} />
                 </div>

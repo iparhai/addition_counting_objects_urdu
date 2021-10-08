@@ -1,12 +1,17 @@
 import React from 'react';
 import Colors from '../constant/colors'
 import PropTypes from 'prop-types'
-import correctAnswerSound from '../assets/sounds/ca.mp3'
-
+// import correctAnswerSound from '../assets/sounds/ca.mp3'
+import correctAnswerSound from '../assets/sounds/rightAnswer.mp3'
+import wrongAnswerSound from '../assets/sounds/wrongAnswer.mp3'
 function AnswerModal({ type, text }) {
+    
+    if(type != "success"){
 
+    }
     const modalType = type === "success" ? 
         ({ class: "correct-answer", el: <i className="fas fa-check"></i>}) : 
+
         ({ class: "wrong-answer", el: <i className="fas fa-times-circle"></i>});
     return (
         <section>
@@ -20,9 +25,12 @@ function AnswerModal({ type, text }) {
 
 function Message({ text, type }) {
     const rightSound = new Audio(correctAnswerSound)
+    const wrongSound = new Audio(wrongAnswerSound)
     if (type === "success") {
-        rightSound.volume = 0.5
         rightSound.play()
+    }
+    else{
+        wrongSound.play();
     }
     return (
         <span>
