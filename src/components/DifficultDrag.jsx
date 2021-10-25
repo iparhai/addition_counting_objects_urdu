@@ -40,8 +40,8 @@ const URLImage = ({ image, handleClick }) => {
             image={img}
             x={image.x}
             y={image.y}
-            width={90}
-            height={70}
+            width={70}
+            height={60}
             // I will use offset to set origin to the center of the image
             offsetX={img ? 90 / 2 : 0}
             offsetY={img ? 70 / 2 : 0}
@@ -129,12 +129,12 @@ const Drop = (props) => {
                     {props.answer}
                 </button>
                 <br />
-                <button className="App-link" style={{
+                <button className="App-link fa fa-paper-plane" style={{
                     background: "rgb(49 205 97)",
-                    padding: "10px",
+
                     border: "1px solid #057897",
                     borderRadius: "0.6em",
-                }} onClick={props.handleAnswer}>Check</button>
+                }} onClick={props.handleAnswer}></button>
             </div>
             <div className="dropBox"
                 ref={container}
