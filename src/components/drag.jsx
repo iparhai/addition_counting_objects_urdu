@@ -59,6 +59,8 @@ const Drop = (props) => {
     const [stageWidth, setStageWidth] = React.useState(300)
     const [stageHeight, setStageHeight] = React.useState(200)
     const [dropS] = React.useState(new Audio(dropSound))
+    const targetImage = React.useRef();
+
 
     // const dragThis = React.useRef();
     const container = React.useRef();
@@ -119,8 +121,19 @@ const Drop = (props) => {
     }, [])
 
     return (
-        <div className="noselect parentDiv" >
-
+        <div className="noselect parentDiv" style={{ display: "flex" }}>
+            <div >
+                <button className="btn fourth answerButton">
+                    {props.answer}
+                </button>
+                <br />
+                <button className="App-link" style={{
+                    background: "rgb(49 205 97)",
+                    padding: "10px",
+                    border: "1px solid #057897",
+                    borderRadius: "0.6em",
+                }} onClick={props.handleAnswer}>Check</button>
+            </div>
             <div className="dropBox"
                 ref={container}
             >
@@ -135,50 +148,59 @@ const Drop = (props) => {
                                 },
                             ])
                         );
+                        playSoundEffect(props.count)
                         props.incCount(1)
                     }}
                 >
-
                     <Stage
                         width={stageWidth}
                         height={stageHeight}
                         ref={stageRef}
                     >
-
                         <Layer>
-
                             {images.map((image) => {
                                 return <URLImage image={image} handleClick={() => {
                                     console.log("adf")
                                     setImages(
                                         images.filter(item => item !== image)
                                     )
-
+                                    playRemoveEffect()
                                     props.decCount(1)
-                                }} />;
+                                }} imageRef={targetImage} />;
                             })}
                         </Layer>
                     </Stage>
 
                 </DropTarget>
             </div>
-            <DragDropContainer targetKey="me"
-                onDrop={(e) => {
-                    console.log(e.dropData.name)
-                }}
-            >
+            <div >
+                <DragDropContainer targetKey="me"
+                    onDragStart={() => {
+                        console.log(targetImage)
+                    }}
+                    onDrop={(e) => {
+                        console.log(e.dropData.name)
+                    }}
+                    style={{
+                        border: "1px dashed white",
+                        borderRadius: "0.6em",
+                        padding: "15px"
+                    }}
+                >
 
-                <img
-                    alt="lion"
-                    src={props.img}
-                    className={"noselect draggableImage "}
+                    <img
+                        alt="lion"
+                        src={props.img}
+                        className={"noselect  questionImage"}
+                        style={{display : "block"}}
+                        ref={targetImage}
+                    />
 
-                />
-            </DragDropContainer>
-            <br />
-            <br />
-           
-        </div>
+                </DragDropContainer>
+                <br />
+                <br />
+            </div>
+        </div >
     );
 };
 

@@ -175,7 +175,7 @@ class Quiz extends React.Component {
                     <blockquote class="electric bubble">Autobots,<span>Attack!</span></blockquote>
                   </section> */}
                   <h1 style={{ fontSize: "3.5em" }}> {this.state.problem} </h1>
-                  <DifficultDrag incCount={(number) => { this.setState({ answer: this.state.answer + number }) }} decCount={(number) => { this.setState({ answer: this.state.answer - number }) }} count={this.state.answer} img={this.state.randomImage} />
+                  <DifficultDrag handleAnswer={this.evaluateProblem} answer={this.state.answer} incCount={(number) => { this.setState({ answer: this.state.answer + number }) }} decCount={(number) => { this.setState({ answer: this.state.answer - number }) }} count={this.state.answer} img={this.state.randomImage} />
                 </div> :
                 <div>
                   {/* <table align="center">
@@ -191,7 +191,7 @@ class Quiz extends React.Component {
                       </tr>
                     </tbody>
                   </table> */}
-                  {(parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber)) < 5 ? <div className="objectRow" style={{ width: "100%" }}>
+                  {/* {(parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber)) < 5 ? <div className="objectRow" style={{ width: "100%" }}>
                     <div className="objectLeft">
                       {[...Array(parseInt(this.state.firstNumber))].map((e, i) => {
                         return <img key={i} src={this.state.randomImage} className="questionImage " draggable="false" />
@@ -203,10 +203,9 @@ class Quiz extends React.Component {
                         return <img key={i} src={this.state.randomImage} className="questionImage " draggable="false" />
                       })}
                     </div>
-                  </div> : <h1 style={{ fontSize: "3.5em" }}> {this.state.problem} </h1>}
-
-                  <Drop incCount={(number) => { this.setState({ answer: this.state.answer + number }) }} decCount={(number) => { this.setState({ answer: this.state.answer - number }) }} count={this.state.answer} img={this.state.randomImage} />
-                </div>
+                  </div> : <h1 style={{ fontSize: "3.5em" }}> {this.state.problem} </h1>} */}
+                  <h1 style={{ fontSize: "3.5em" }}> {this.state.problem} </h1>
+                  <Drop handleAnswer={this.evaluateProblem} answer={this.state.answer} incCount={(number) => { this.setState({ answer: this.state.answer + number }) }} decCount={(number) => { this.setState({ answer: this.state.answer - number }) }} count={this.state.answer} img={this.state.randomImage} />                </div>
               }
               {/* <input
                 ref={input => {
@@ -227,7 +226,7 @@ class Quiz extends React.Component {
                 value={this.state.answer}
                 onKeyUp={this.keyingUp}
               /> */}
-              <button className="btn fourth answerButton" onClick={this.evaluateProblem}> {this.state.answer} </button>
+              {/* <button className="btn fourth answerButton" onClick={this.evaluateProblem}> {this.state.answer} </button> */}
             </div>
           )}
         </div>
